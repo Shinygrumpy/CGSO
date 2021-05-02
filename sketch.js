@@ -8,6 +8,7 @@ function setup() {
 
   speed = random(55,90);
   weight = random(400,1500);
+  thickness = random(22,83)
 
   car = createSprite(50,200,50,50);
   wall = createSprite(1500,200,60,height/2);
@@ -20,7 +21,7 @@ function setup() {
 function draw() {
 background(255,255,255);
 
-if(wall.x-car.x < (car.widht+wall.width)/2)
+if(wall.x-car.x < (car.width+wall.width)/2)
 {
 
 car.velocityX = 0;
@@ -53,4 +54,17 @@ drawSprites();
 
 }
 
+function hasCollided(car,wall){
+
+  bulletRightEdge = car.x + car.width;
+  wallLeftEdge = wall.x;
+
+  if (carRightEdge >= wallLeftEdge){
+
+    return true
+
+  }
+
+  return false;
+}
 
